@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { addition } from './addition/addition.component'
 
 @Component({
     moduleId: module.id,
