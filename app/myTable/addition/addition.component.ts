@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     templateUrl: 'addition.component.html'
 })
 
-export class addition {
+export default class addition {
 
 }

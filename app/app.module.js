@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var my_table_component_1 = require("./myTable/my-table.component");
+var addition_component_1 = require("./myTable/addition/addition.component");
 var forms_1 = require("@angular/forms");
 // @NgModule - декоратор, который определяет данные для создаваемого модуля.
 // Для того чтобы приложение могло выполняться в браузере, текущий модуль (корневой модуль)
@@ -26,7 +27,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent, my_table_component_1.myTable],
+        declarations: [app_component_1.AppComponent, my_table_component_1.default, addition_component_1.default],
         bootstrap: [app_component_1.AppComponent] // компонент с которого начинается отображение приложения
     })
 ], AppModule);

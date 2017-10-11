@@ -19,5 +19,5 @@ addition = __decorate([
         templateUrl: 'addition.component.html'
     })
 ], addition);
-exports.addition = addition;
+exports.default = addition;
 //# sourceMappingURL=addition.component.js.map

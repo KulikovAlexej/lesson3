@@ -65,5 +65,5 @@ myTable = __decorate([
         inputs: ["rows"]
     })
 ], myTable);
-exports.myTable = myTable;
+exports.default = myTable;
 //# sourceMappingURL=my-table.component.js.map

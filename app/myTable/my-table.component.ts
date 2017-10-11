@@ -9,7 +9,7 @@ import { addition } from './addition/addition.component'
     inputs: ["rows"]
 })
 
-export class myTable {
+export default class myTable {
     rows: number;
     NewProducts: Array<any>;
     Categories: Array<string> = ['All Categories', '1', '2', '3'];
