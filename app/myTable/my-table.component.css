@@ -1,0 +1,27 @@
+/*:host{
+    display: block;
+    margin: 20px;
+    border: 1px solid black;
+    background: pink;
+}*/
+thead tr th:last-child{
+    text-align: center;
+}
+tbody tr td:last-child{
+    text-align: center;
+}
+.highPrice{
+    color: red;
+}
+.cat1{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.cat2{
+    background-color: rgba(62, 140, 107, 0.5);
+}
+.cat3{
+    background-color: rgba(25, 78, 222, 0.5);
+}
+.newProdWrap h1{
+    padding: 20px;
+}
