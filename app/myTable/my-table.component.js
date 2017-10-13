@@ -11,11 +11,11 @@ var myTable = (function () {
     function myTable() {
         this.Categories = ['All Categories', '1', '2', '3'];
         this.Category = this.Categories[0];
-        // newProd: Object = {
-        //     name: 'лимончик',
-        //     category: 2,
-        //     price: 300
-        // };
+        this.newProd = {
+            name: 'лимончик',
+            category: 2,
+            price: 300
+        };
         this.Products = [
             { id: 1, name: 'product 1', price: 100, category: 1 },
             { id: 2, name: 'product 2', price: 200, category: 2 },
@@ -27,15 +27,10 @@ var myTable = (function () {
             { id: 8, name: 'product 8', price: 800, category: 2 },
             { id: 9, name: 'product 9', price: 900, category: 3 }
         ];
-        // addProduct(){
-        //     let cloneProduct = {...this.newProd};
-        //     this.Products.push(cloneProduct);
-        //     this.generateArr();
-        // }
     }
     //надо генерировать массив в зависимости от значения Category
     myTable.prototype.generateArr = function () {
-        this.NewProducts = this.Products.slice(0, this.Products.length);
+        this.NewProducts = this.Products.slice();
         if (this.Category != 'All Categories') {
             var numb_1 = this.Category;
             this.NewProducts = this.NewProducts.filter(function (item) {
@@ -51,6 +46,18 @@ var myTable = (function () {
         var elem = this.NewProducts.indexOf(obj);
         this.NewProducts.splice(elem, 1);
         this.Products = this.NewProducts;
+    };
+    myTable.prototype.addProduct = function (newProduct) {
+        // let cloneProduct = {...this.newProd};
+        // this.Products.push(cloneProduct);
+        // 
+        this.Products.push(newProduct);
+        this.generateArr();
+    };
+    myTable.prototype.test = function () {
+        setTimeout(function () {
+            this.addProduct(this.newProd);
+        }, 3000);
     };
     return myTable;
 }());

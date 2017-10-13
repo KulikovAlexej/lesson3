@@ -12,7 +12,7 @@
         <tr *ngFor='let product of NewProducts; let i = index' [class.cat1]='product.category == 1' [class.cat2]='product.category == 2'
             [class.cat3]='product.category == 3' [class.highPrice]='product.price > 500'>
             <td>{{ i + 1 }}</td>
-            <td>{{ product.category }}</td>
+            <td (click) = addProduct(newProd)>{{ product.category }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.price }}</td>
             <td><i (click)= deleteProduct(product) class="fa fa-times-circle-o fa-3x"></i></td>
@@ -23,30 +23,10 @@
     <div class='col-sm-2'>
         <h1>Выбрать категории:</h1>
         <form class='form-horizontal'>
-            <select (click)= generateArr() class="form-control" name="category" [(ngModel)]='Category'>
+            <select (select)= generateArr() class="form-control" name="category" [(ngModel)]='Category'>
             <option *ngFor='let category of Categories'>{{ category }}</option>
         </select>
         </form>
     </div>
 </div>
-<div class="row newProdWrap">
-    <!--<h1>Добавить новый продукт:</h1>
-    <form>
-        <div class="form-group">
-            <label class="col-xs-2 control-label">Название продукта<input type="text" class="form-control" name='prodName' [(ngModel)]='newProd.name'></label>
-        </div>
-        <div class="form-group">
-            <label>Категория
-                <select class="form-control" name="catName" [(ngModel)]='newProd.category'>
-                    <option *ngFor='let category of Categories'>{{ category }}</option>
-                </select>
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Стоимость<input type="text" class="form-control" name='cost' [(ngModel)] = 'newProd.price'></label>
-        </div>
-        <button class="btn btn-default" (click) = addProduct()>Добавить</button>
-    </form>-->
-
-</div>
-<addition [primaryArr] = 'Products' [readyArr] = 'newProducts' [categoryList] = 'Categories' [category] = 'Category'></addition>
+<addition [primaryArr] = 'Products' [readyArr] = 'newProducts' [categoryList] = 'Categories' [category] = 'Category' (addProductEvent) = "addProduct($event)"></addition>

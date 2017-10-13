@@ -1,12 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,31 +17,20 @@ var addition = (function () {
             category: null,
             price: ''
         };
+        this.addProductEvent = new core_1.EventEmitter;
         this.primaryArr = [];
         this.readyArr = [];
         this.categoryList = [];
     }
-    addition.prototype.generateArr = function () {
-        this.readyArr = this.primaryArr.slice(0, this.primaryArr.length);
-        if (this.category != 'All Categories') {
-            var numb_1 = this.category;
-            this.readyArr = this.readyArr.filter(function (item) {
-                return item.category == numb_1;
-            });
-            console.log(this.category);
-            console.log('im working');
-        }
-    };
     addition.prototype.addProduct = function () {
-        var cloneProduct = __assign({}, this.newProd);
-        this.primaryArr.push(cloneProduct);
-        // console.log(cloneProduct);
-        // console.log(this.primaryArr);
-        this.generateArr();
-        // console.log(this.readyArr)
+        this.addProductEvent.emit(this.newProd);
     };
     return addition;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], addition.prototype, "addProductEvent", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)

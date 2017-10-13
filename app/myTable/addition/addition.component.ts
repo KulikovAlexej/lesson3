@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import  myTable  from '../my-table.component'
 
 @Component({
@@ -15,6 +15,9 @@ export default class addition {
         price: ''
     };
 
+    @Output()
+    addProductEvent: EventEmitter<any> = new EventEmitter;
+
     @Input()
     primaryArr: Array<any> = [];
 
@@ -27,26 +30,9 @@ export default class addition {
     @Input()
     category;
 
-    generateArr() {
-        this.readyArr = this.primaryArr.slice(0, this.primaryArr.length);
-        if (this.category != 'All Categories') {
-            let numb = this.category;
-            this.readyArr = this.readyArr.filter(function (item) {
-                return item.category == numb
-            });
-            console.log(this.category);
-            console.log('im working');
-        }
-
+    addProduct(){
+        this.addProductEvent.emit(this.newProd)
     }
 
-    addProduct() {
-        let cloneProduct = {...this.newProd};
-        this.primaryArr.push(cloneProduct);
-        // console.log(cloneProduct);
-        // console.log(this.primaryArr);
-        this.generateArr();
-        // console.log(this.readyArr)
-        
-    }
+
 }
