@@ -30,7 +30,7 @@
     </div>
 </div>
 <div class="row newProdWrap">
-    <h1>Добавить новый продукт:</h1>
+    <!--<h1>Добавить новый продукт:</h1>
     <form>
         <div class="form-group">
             <label class="col-xs-2 control-label">Название продукта<input type="text" class="form-control" name='prodName' [(ngModel)]='newProd.name'></label>
@@ -46,7 +46,7 @@
             <label>Стоимость<input type="text" class="form-control" name='cost' [(ngModel)] = 'newProd.price'></label>
         </div>
         <button class="btn btn-default" (click) = addProduct()>Добавить</button>
-    </form>
+    </form>-->
 
 </div>
-<addition></addition>
+<addition [primaryArr] = 'Products' [readyArr] = 'newProducts' [categoryList] = 'Categories' [category] = 'Category'></addition>

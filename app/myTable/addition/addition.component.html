@@ -1,1 +1,24 @@
-<h1>Это компонент для добавления товаров</h1>
+<div class="row">
+    <h1>Это компонент для добавления товаров</h1>
+    <h1>Добавить новый продукт:</h1>
+</div>
+<div class="row">
+    <form>
+        <div class="form-group">
+            <label class="col-xs-2 control-label">Название продукта<input type="text" class="form-control" name='prodName' [(ngModel)]='newProd.name'></label>
+        </div>
+        <div class="form-group">
+            <label>Категория
+                <select class="form-control" name="catName" [(ngModel)]='newProd.category'>
+                    <option *ngFor='let category of categoryList'>{{ category }}</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Стоимость<input type="text" class="form-control" name='cost' [(ngModel)] = 'newProd.price'></label>
+        </div>
+        <button class="btn btn-default" (click) = addProduct()>Добавить</button>
+    </form>
+</div>
+
+    

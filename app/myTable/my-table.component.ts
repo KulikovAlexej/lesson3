@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { addition } from './addition/addition.component'
+import  addition  from './addition/addition.component'
 
 @Component({
     moduleId: module.id,
@@ -14,11 +14,11 @@ export default class myTable {
     NewProducts: Array<any>;
     Categories: Array<string> = ['All Categories', '1', '2', '3'];
     Category: string = this.Categories[0];
-    newProd: Object = {
-        name: 'лимончик',
-        category: 2,
-        price: 300
-    };
+    // newProd: Object = {
+    //     name: 'лимончик',
+    //     category: 2,
+    //     price: 300
+    // };
     Products: Array<any> = [
         { id: 1, name: 'product 1', price: 100, category: 1 },
         { id: 2, name: 'product 2', price: 200, category: 2 },
@@ -48,16 +48,14 @@ export default class myTable {
     deleteProduct(obj) {
         let elem = this.NewProducts.indexOf(obj);
         this.NewProducts.splice(elem, 1);
+        this.Products = this.NewProducts;
     }
 
 
-    addProduct(){
-        let cloneProduct = {};
-        for(let key in this.newProd){
-            cloneProduct[key] = this.newProd[key]
-        }   
-        this.Products.push(cloneProduct);
-        this.generateArr();
-    }
+    // addProduct(){
+    //     let cloneProduct = {...this.newProd};
+    //     this.Products.push(cloneProduct);
+    //     this.generateArr();
+    // }
 
 }

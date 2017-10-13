@@ -12,6 +12,7 @@ import myTable from './myTable/my-table.component'
   templateUrl: 'app.component.html', // HTML разметка определяющая представление текущего компонента
   styleUrls: ['app.component.css']
 })
+
 export class AppComponent {
   arr: Array<number> = [1,2,3,4]
 } // Класс определяющий поведение компонента
