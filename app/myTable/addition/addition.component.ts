@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import  myTable  from '../my-table.component'
 
 @Component({
@@ -11,42 +11,29 @@ import  myTable  from '../my-table.component'
 export default class addition {
     newProd: Object = {
         name: '',
-        category: null,
+        category: '',
         price: ''
     };
 
-    @Input()
-    primaryArr: Array<any> = [];
+    @Input() Products: Array<any> = [];
+    @Input() Categories: Array<any> = [];
+    Category;
+    addingCategories;
+    
 
-    @Input()
-    readyArr: Array<any> = [];
+    @Output() addingProduct: EventEmitter<any> = new EventEmitter;
 
-    @Input()
-    categoryList: Array<string> = [];
-
-    @Input()
-    category;
-
-    generateArr() {
-        this.readyArr = this.primaryArr.slice(0, this.primaryArr.length);
-        if (this.category != 'All Categories') {
-            let numb = this.category;
-            this.readyArr = this.readyArr.filter(function (item) {
-                return item.category == numb
-            });
-            console.log(this.category);
-            console.log('im working');
-        }
-
+    ngOnInit(){
+        this.addingCategories = [...this.Categories];
+        this.addingCategories = this.addingCategories.splice(1,this.addingCategories.length - 1);
+        console.log(this.Categories);
     }
-
-    addProduct() {
-        let cloneProduct = {...this.newProd};
-        this.primaryArr.push(cloneProduct);
-        // console.log(cloneProduct);
-        // console.log(this.primaryArr);
-        this.generateArr();
-        // console.log(this.readyArr)
+    addProduct(event) {
+        if(this.newProd.name != "" && this.newProd.category != "" && this.newProd.price != ""){
+            let cloneProduct = {...this.newProd};
+            this.Products.push(cloneProduct);   
+            this.addingProduct.emit(this.Products);
+        }
         
     }
 }

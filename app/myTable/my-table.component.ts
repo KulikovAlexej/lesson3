@@ -14,11 +14,11 @@ export default class myTable {
     NewProducts: Array<any>;
     Categories: Array<string> = ['All Categories', '1', '2', '3'];
     Category: string = this.Categories[0];
-    // newProd: Object = {
-    //     name: 'лимончик',
-    //     category: 2,
-    //     price: 300
-    // };
+    newProd: Object = {
+        name: 'лимончик',
+        category: 2,
+        price: 300
+    };
     Products: Array<any> = [
         { id: 1, name: 'product 1', price: 100, category: 1 },
         { id: 2, name: 'product 2', price: 200, category: 2 },
@@ -31,7 +31,7 @@ export default class myTable {
         { id: 9, name: 'product 9', price: 900, category: 3 }];
     //надо генерировать массив в зависимости от значения Category
     generateArr() {
-        this.NewProducts = this.Products.slice(0, this.Products.length);
+        this.NewProducts = [...this.Products];
         if (this.Category != 'All Categories') {
             let numb = this.Category;
             this.NewProducts = this.NewProducts.filter(function (item) {
@@ -43,6 +43,7 @@ export default class myTable {
     }
     ngOnInit() {
         this.generateArr();
+        console.log(this.Categories);
     }
 
     deleteProduct(obj) {
@@ -52,10 +53,15 @@ export default class myTable {
     }
 
 
-    // addProduct(){
-    //     let cloneProduct = {...this.newProd};
-    //     this.Products.push(cloneProduct);
-    //     this.generateArr();
-    // }
+    addProduct(){
+        let cloneProduct = {...this.newProd};
+        this.Products.push(cloneProduct);
+        this.generateArr();
+    }
+
+    handleMyEvent(arg){
+        this.generateArr();
+        console.log(arg);
+    }
 
 }

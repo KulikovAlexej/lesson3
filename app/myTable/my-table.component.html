@@ -23,30 +23,10 @@
     <div class='col-sm-2'>
         <h1>Выбрать категории:</h1>
         <form class='form-horizontal'>
-            <select (click)= generateArr() class="form-control" name="category" [(ngModel)]='Category'>
+            <select (select)= generateArr() class="form-control" name="category" [(ngModel)]='Categories'>
             <option *ngFor='let category of Categories'>{{ category }}</option>
         </select>
         </form>
     </div>
 </div>
-<div class="row newProdWrap">
-    <!--<h1>Добавить новый продукт:</h1>
-    <form>
-        <div class="form-group">
-            <label class="col-xs-2 control-label">Название продукта<input type="text" class="form-control" name='prodName' [(ngModel)]='newProd.name'></label>
-        </div>
-        <div class="form-group">
-            <label>Категория
-                <select class="form-control" name="catName" [(ngModel)]='newProd.category'>
-                    <option *ngFor='let category of Categories'>{{ category }}</option>
-                </select>
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Стоимость<input type="text" class="form-control" name='cost' [(ngModel)] = 'newProd.price'></label>
-        </div>
-        <button class="btn btn-default" (click) = addProduct()>Добавить</button>
-    </form>-->
-
-</div>
-<addition [primaryArr] = 'Products' [readyArr] = 'newProducts' [categoryList] = 'Categories' [category] = 'Category'></addition>
+<addition [Products] = 'Products' [Categories] = 'Categories' (addingProduct) = 'handleMyEvent($event)'></addition>

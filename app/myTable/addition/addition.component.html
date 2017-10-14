@@ -10,7 +10,7 @@
         <div class="form-group">
             <label>Категория
                 <select class="form-control" name="catName" [(ngModel)]='newProd.category'>
-                    <option *ngFor='let category of categoryList'>{{ category }}</option>
+                    <option *ngFor='let category of addingCategories'>{{ category }}</option>
                 </select>
             </label>
         </div>

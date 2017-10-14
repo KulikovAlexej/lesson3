@@ -22,50 +22,39 @@ var addition = (function () {
     function addition() {
         this.newProd = {
             name: '',
-            category: null,
+            category: '',
             price: ''
         };
-        this.primaryArr = [];
-        this.readyArr = [];
-        this.categoryList = [];
+        this.Products = [];
+        this.Categories = [];
+        this.addingProduct = new core_1.EventEmitter;
     }
-    addition.prototype.generateArr = function () {
-        this.readyArr = this.primaryArr.slice(0, this.primaryArr.length);
-        if (this.category != 'All Categories') {
-            var numb_1 = this.category;
-            this.readyArr = this.readyArr.filter(function (item) {
-                return item.category == numb_1;
-            });
-            console.log(this.category);
-            console.log('im working');
-        }
+    addition.prototype.ngOnInit = function () {
+        this.addingCategories = this.Categories.slice();
+        this.addingCategories = this.addingCategories.splice(1, this.addingCategories.length - 1);
+        console.log(this.Categories);
     };
-    addition.prototype.addProduct = function () {
-        var cloneProduct = __assign({}, this.newProd);
-        this.primaryArr.push(cloneProduct);
-        // console.log(cloneProduct);
-        // console.log(this.primaryArr);
-        this.generateArr();
-        // console.log(this.readyArr)
+    addition.prototype.addProduct = function (event) {
+        if (this.newProd.name != "" && this.newProd.category != "" && this.newProd.price != "") {
+            var cloneProduct = __assign({}, this.newProd);
+            this.Products.push(cloneProduct);
+            this.addingProduct.emit(this.Products);
+        }
     };
     return addition;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)
-], addition.prototype, "primaryArr", void 0);
+], addition.prototype, "Products", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)
-], addition.prototype, "readyArr", void 0);
+], addition.prototype, "Categories", void 0);
 __decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], addition.prototype, "categoryList", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], addition.prototype, "category", void 0);
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], addition.prototype, "addingProduct", void 0);
 addition = __decorate([
     core_1.Component({
         moduleId: module.id,

@@ -1,4 +1,12 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,11 +19,11 @@ var myTable = (function () {
     function myTable() {
         this.Categories = ['All Categories', '1', '2', '3'];
         this.Category = this.Categories[0];
-        // newProd: Object = {
-        //     name: 'лимончик',
-        //     category: 2,
-        //     price: 300
-        // };
+        this.newProd = {
+            name: 'лимончик',
+            category: 2,
+            price: 300
+        };
         this.Products = [
             { id: 1, name: 'product 1', price: 100, category: 1 },
             { id: 2, name: 'product 2', price: 200, category: 2 },
@@ -27,15 +35,10 @@ var myTable = (function () {
             { id: 8, name: 'product 8', price: 800, category: 2 },
             { id: 9, name: 'product 9', price: 900, category: 3 }
         ];
-        // addProduct(){
-        //     let cloneProduct = {...this.newProd};
-        //     this.Products.push(cloneProduct);
-        //     this.generateArr();
-        // }
     }
     //надо генерировать массив в зависимости от значения Category
     myTable.prototype.generateArr = function () {
-        this.NewProducts = this.Products.slice(0, this.Products.length);
+        this.NewProducts = this.Products.slice();
         if (this.Category != 'All Categories') {
             var numb_1 = this.Category;
             this.NewProducts = this.NewProducts.filter(function (item) {
@@ -46,11 +49,21 @@ var myTable = (function () {
     };
     myTable.prototype.ngOnInit = function () {
         this.generateArr();
+        console.log(this.Categories);
     };
     myTable.prototype.deleteProduct = function (obj) {
         var elem = this.NewProducts.indexOf(obj);
         this.NewProducts.splice(elem, 1);
         this.Products = this.NewProducts;
+    };
+    myTable.prototype.addProduct = function () {
+        var cloneProduct = __assign({}, this.newProd);
+        this.Products.push(cloneProduct);
+        this.generateArr();
+    };
+    myTable.prototype.handleMyEvent = function (arg) {
+        this.generateArr();
+        console.log(arg);
     };
     return myTable;
 }());

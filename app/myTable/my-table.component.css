@@ -1,9 +1,10 @@
-/*:host{
+:host{
     display: block;
     margin: 20px;
-    border: 1px solid black;
-    background: pink;
-}*/
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
 thead tr th:last-child{
     text-align: center;
 }
@@ -24,4 +25,10 @@ tbody tr td:last-child{
 }
 .newProdWrap h1{
     padding: 20px;
+}
+.row .col-sm-2 h1{
+    margin-left: 20px;
+}
+.row .col-sm-2 form{
+    margin-left: 20px;
 }
