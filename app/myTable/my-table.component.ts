@@ -43,6 +43,7 @@ export default class myTable {
     }
     ngOnInit() {
         this.generateArr();
+        console.log(this.Categories);
     }
 
     deleteProduct(obj) {
@@ -52,20 +53,16 @@ export default class myTable {
     }
 
 
-    addProduct(newProduct){
-        // let cloneProduct = {...this.newProd};
-        // this.Products.push(cloneProduct);
-        // 
-        this.Products.push(newProduct);
+    addProduct(){
+        let cloneProduct = {...this.newProd};
+        this.Products.push(cloneProduct);
         this.generateArr();
+    }
 
+    handleMyEvent(arg){
+        this.generateArr();
+        console.log(arg);
     }
-    test(){
-        setTimeout(function(){
-            this.addProduct(this.newProd)
-        }, 3000)
-    }
-    
 
 }
 

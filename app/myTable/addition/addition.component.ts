@@ -9,30 +9,31 @@ import  myTable  from '../my-table.component'
 })
 
 export default class addition {
-    newProd: Object = {
+    newProd: Object<any> = {
         name: '',
-        category: null,
+        category: '',
         price: ''
     };
 
-    @Output()
-    addProductEvent: EventEmitter<any> = new EventEmitter;
+    @Input() Products: Array<any> = [];
+    @Input() Categories: Array<any> = [];
+    Category;
+    addingCategories;
+    
 
-    @Input()
-    primaryArr: Array<any> = [];
+    @Output() addingProduct: EventEmitter<any> = new EventEmitter;
 
-    @Input()
-    readyArr: Array<any> = [];
-
-    @Input()
-    categoryList: Array<string> = [];
-
-    @Input()
-    category;
-
-    addProduct(){
-        this.addProductEvent.emit(this.newProd)
+    ngOnInit(){
+        this.addingCategories = [...this.Categories];
+        this.addingCategories = this.addingCategories.splice(1,this.addingCategories.length - 1);
+        console.log(this.Categories);
     }
-
-
+    addProduct(event) {
+        if(this.newProd.name != "" && this.newProd.category != "" && this.newProd.price != ""){
+            let cloneProduct = {...this.newProd};
+            this.Products.push(cloneProduct);   
+            this.addingProduct.emit(this.Products);
+        }
+        
+    }
 }

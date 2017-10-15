@@ -1,4 +1,12 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,12 +49,14 @@ var myTable = (function () {
     };
     myTable.prototype.ngOnInit = function () {
         this.generateArr();
+        console.log(this.Categories);
     };
     myTable.prototype.deleteProduct = function (obj) {
         var elem = this.NewProducts.indexOf(obj);
         this.NewProducts.splice(elem, 1);
         this.Products = this.NewProducts;
     };
+<<<<<<< HEAD
     myTable.prototype.addProduct = function (newProduct) {
         // let cloneProduct = {...this.newProd};
         // this.Products.push(cloneProduct);
@@ -58,6 +68,16 @@ var myTable = (function () {
         setTimeout(function () {
             this.addProduct(this.newProd);
         }, 3000);
+=======
+    myTable.prototype.addProduct = function () {
+        var cloneProduct = __assign({}, this.newProd);
+        this.Products.push(cloneProduct);
+        this.generateArr();
+    };
+    myTable.prototype.handleMyEvent = function (arg) {
+        this.generateArr();
+        console.log(arg);
+>>>>>>> dev
     };
     return myTable;
 }());

@@ -14,9 +14,10 @@ var addition = (function () {
     function addition() {
         this.newProd = {
             name: '',
-            category: null,
+            category: '',
             price: ''
         };
+<<<<<<< HEAD
         this.addProductEvent = new core_1.EventEmitter;
         this.primaryArr = [];
         this.readyArr = [];
@@ -24,6 +25,23 @@ var addition = (function () {
     }
     addition.prototype.addProduct = function () {
         this.addProductEvent.emit(this.newProd);
+=======
+        this.Products = [];
+        this.Categories = [];
+        this.addingProduct = new core_1.EventEmitter;
+    }
+    addition.prototype.ngOnInit = function () {
+        this.addingCategories = this.Categories.slice();
+        this.addingCategories = this.addingCategories.splice(1, this.addingCategories.length - 1);
+        console.log(this.Categories);
+    };
+    addition.prototype.addProduct = function (event) {
+        if (this.newProd.name != "" && this.newProd.category != "" && this.newProd.price != "") {
+            var cloneProduct = __assign({}, this.newProd);
+            this.Products.push(cloneProduct);
+            this.addingProduct.emit(this.Products);
+        }
+>>>>>>> dev
     };
     return addition;
 }());
@@ -34,19 +52,15 @@ __decorate([
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)
-], addition.prototype, "primaryArr", void 0);
+], addition.prototype, "Products", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)
-], addition.prototype, "readyArr", void 0);
+], addition.prototype, "Categories", void 0);
 __decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], addition.prototype, "categoryList", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], addition.prototype, "category", void 0);
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], addition.prototype, "addingProduct", void 0);
 addition = __decorate([
     core_1.Component({
         moduleId: module.id,

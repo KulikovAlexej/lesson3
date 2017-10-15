@@ -23,10 +23,10 @@
     <div class='col-sm-2'>
         <h1>Выбрать категории:</h1>
         <form class='form-horizontal'>
-            <select (select)= generateArr() class="form-control" name="category" [(ngModel)]='Category'>
+            <select (select)= generateArr() class="form-control" name="category" [(ngModel)]='Categories'>
             <option *ngFor='let category of Categories'>{{ category }}</option>
         </select>
         </form>
     </div>
 </div>
-<addition [primaryArr] = 'Products' [readyArr] = 'newProducts' [categoryList] = 'Categories' [category] = 'Category' (addProductEvent) = "addProduct($event)"></addition>
+<addition [Products] = 'Products' [Categories] = 'Categories' (addingProduct) = 'handleMyEvent($event)'></addition>
