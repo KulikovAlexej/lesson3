@@ -9,7 +9,7 @@ import  myTable  from '../my-table.component'
 })
 
 export default class addition {
-    newProd: Object = {
+    newProd: Object<any> = {
         name: '',
         category: '',
         price: ''
